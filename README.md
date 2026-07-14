@@ -56,7 +56,7 @@ Most early activity was automated scanning and opportunistic probing, which matc
 
 ## 3. Splunk SIEM Setup
 
-Splunk Enterprise was installed directly on the VPS and used as the main SIEM for the project. During setup, Splunk’s default web port `8000` conflicted with Honeytrap, which was already listening on that port.
+Splunk Enterprise was installed directly on the VPS and used as the main SIEM for the project. During setup, Splunk's default web port `8000` conflicted with Honeytrap, which was already listening on that port.
 
 <p align="center"><img src="files/Screenshot%202026-07-13%20021958.png" width="760"></p>
 
@@ -97,7 +97,7 @@ At this point, Splunk had indexed over 1,100 events across Conpot, Dionaea, and 
 
 ## 5. Resource Contention and Resize
 
-Running Splunk, T-Pot, and the internal T-Pot stack on 8GB RAM caused instability. I disabled T-Pot’s redundant internal ELK stack since Splunk was serving as the SIEM, then resized the VPS to 16GB RAM, 8 vCPUs, and 260GB storage.
+Running Splunk, T-Pot, and the internal T-Pot stack on 8GB RAM caused instability. I disabled T-Pot's redundant internal ELK stack since Splunk was serving as the SIEM, then resized the VPS to 16GB RAM, 8 vCPUs, and 260GB storage.
 
 <p align="center"><img src="files/Screenshot%202026-07-13%20030615.png" width="720"></p>
 
@@ -114,7 +114,7 @@ Raw honeypot logs are useful, but they include a lot of scanner noise. To add a 
 
 <p align="center"><img src="files/Screenshot%202026-07-13%20165302.png" width="760"></p>
 
-The token values should be redacted before publishing. Even fake credentials and Canarytoken URLs should not be exposed publicly because it can burn the bait and create false alerts.
+Token values in the screenshot above are redacted. Even fake credentials and Canarytoken URLs are not published, since a public repo makes the bait discoverable by anyone — not just an attacker who has actually compromised the host — which burns the token and generates false alerts.
 
 ## 7. LLM MITRE ATT&CK Classifier
 
@@ -177,7 +177,7 @@ This reinforced the core lesson of the project: exposed public infrastructure is
 
 ## Key Decisions & Lessons
 
-- **Splunk over T-Pot’s internal ELK stack.** I used Splunk as the system of record because it better matches SOC workflows and connects to my previous detection engineering work.
+- **Splunk over T-Pot's internal ELK stack.** I used Splunk as the system of record because it better matches SOC workflows and connects to my previous detection engineering work.
 - **Resize instead of forcing 8GB to work.** Splunk plus a full honeypot suite needed more memory. Moving to 16GB RAM made the lab stable.
 - **Port conflicts are expected in honeypot labs.** Honeytrap occupying port `8000` was not a random issue. It was part of the honeypot attack surface.
 - **Honeytokens create higher-confidence alerts.** Raw honeypot hits show scanning volume, but token interaction suggests deeper attacker behavior.
