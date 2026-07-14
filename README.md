@@ -4,7 +4,7 @@ Live honeypot threat intelligence and automated triage lab. A public-facing T-Po
 
 **Stack:** T-Pot 24.04.1 · Splunk Enterprise · Ubuntu 22.04 · RamNode VPS · Docker · Canarytokens · Python · Anthropic Claude API · Splunk REST API · Splunk HEC · MITRE ATT&CK
 
-**Full write-up:** [Honeypot_TI_Lab_Writeup Draft.pdf](<Honeypot_TI_Lab_Writeup Draft.pdf>) covers the architecture, troubleshooting, deception layer, and LLM enrichment pipeline in depth.
+**Full write-up:** [Honeypot_TI_Lab_Writeup Draft.pdf](<Honeypot_TI_Lab_Writeup>) covers the architecture, troubleshooting, deception layer, and LLM enrichment pipeline in depth.
 
 ---
 
